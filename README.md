@@ -1,33 +1,50 @@
-## Hiveton H5000M DDR4 4GB 3200Mbps (H5ANBG6NAMR-XNC) 改裝指南
+# Hiveton H5000M DDR4 4GB 3200Mbps Modification Guide
 
-### 環境與硬體規格
-* **設備型號:** Hiveton H5000M
-* **SoC:** MT7987A
-* **記憶體晶片:** SK Hynix **H5ANBG6NAMR-XNC** (DDR4 16Gb, x16 DDP 高容量封裝)
-* **最終時脈:** **3200Mbps** (穩定運行，無需降頻)
-* **原始碼版本:** `bl-mt798x` (ATF/BL2)
+This repository provides a comprehensive guide to upgrading the RAM of the **Hiveton H5000M (MT7987A)** from the stock 1GB to **4GB DDR4 3200Mbps**. This mod achieves stable operation at the default frequency without the need for downclocking.
+
+## Environment & Hardware Specifications
+* **Device Model:** Hiveton H5000M
+* **SoC:** MediaTek MT7987A (Filogic 830)
+* **RAM Chip:** SK Hynix **H5ANBG6NAMR-XNC** (DDR4 16Gb, x16 DDP High-Density Package)
+* **Final Frequency:** **3200Mbps** (Stable at default clock)
+* **Bootloader Source:** [hanwckf/bl-mt798x](https://github.com/hanwckf/bl-mt798x) (ATF/BL2)
 
 ---
 
-### 核心解決方案
+## Core Solution
 
-要讓 MT7987 穩定支援 4GB 容量並在高頻下運作，必須同時進行「硬體修改」與「軟體配置」：
+Successfully supporting 4GB RAM on the MT7987 at high frequencies requires a combination of **Hardware Strapping Adjustment** and **Software Configuration**.
 
-#### 1. 硬體電阻修改 (關鍵步驟)
-參考了 **MT7988 (BPI-R4)** 的 8GB 改裝案例，MT7987 在改裝高容量 DDR 顆粒時，必須調整主機板上的電阻配置，以改變對應 DDR4 顆粒 **E9 (BG1)** 與 **M9 (UZQ)** 引腳的電平。
+### 1. Hardware Resistor Modification (Critical)
+Based on the **MT7988 (BPI-R4)** 8GB upgrade reference, the MT7987 requires hardware resistor changes to correctly set the logic levels for the **E9 (BG1)** and **M9 (UZQ)** pins. These pins are essential for bank grouping and impedance calibration in high-density chips.
 
-詳細步驟：
+#### Detailed Steps:
 
-a.修改圖片[電阻1]（電路板正面，位於DDR4顆粒旁）中圈起來位置的電阻（五個並排電阻中從右數來第2個），將其從0歐姆更換成240歐姆。
-
-b.修改[電阻2]（電路板背面，位於DDR4顆粒正後方位置）圈起來的位置的電阻，將其移除。
-
-注意事項：電路板有兩個版本，此為V2版本，設置電阻不影嚮更換4GB顆粒(較原本的1GB顆粒大），若為V1版本，設置電阻會擋到體積較大的4GB顆粒，導置顆粒無法安裝，改裝前需注意電路板板本。
-
-#### 2. 軟體編譯配置
-在 `bl-mt798x` 的 `make menuconfig` 中開啟以下選項：
-* 開啟 `Support DDR4 4GB (16-bits)`。
-
-僅須更新BL2即可
+**A. Top Side Modification:**
+Locate the cluster of resistors next to the DDR4 chip as shown in the image below. There are five resistors aligned in a row. 
+* **Action:** Identify the **second resistor from the right**. Replace the original 0-ohm resistor with a **240-ohm** resistor.
 
 
+
+**B. Bottom Side Modification:**
+Flip the PCB to the back, directly behind the DDR4 chip.
+* **Action:** **Remove** the resistor circled in the reference image.
+
+#### PCB Revision Warning:
+* **V2 PCB:** The layout is compatible with larger 4GB chip footprints.
+* **V1 PCB:** The resistor placement physically obstructs the larger 4GB chip, preventing it from sitting flush on the pads. Verify your PCB version before desoldering.
+
+
+
+---
+
+### 2. Software Configuration (ATF/BL2)
+
+In the `bl-mt798x` source code, follow these steps:
+
+1. Run `make menuconfig`.
+2. Navigate to the memory settings.
+3. Enable: `Support DDR4 4GB (16-bits)`.
+4. Compile and flash the **BL2** image.
+
+---
