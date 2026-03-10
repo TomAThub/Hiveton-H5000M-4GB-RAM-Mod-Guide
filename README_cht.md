@@ -19,8 +19,10 @@
 詳細步驟：
 
 a.修改圖片[1]（電路板正面，位於DDR4顆粒旁）中圈起來位置的電阻（五個並排電阻中從右數來第2個），將其從0歐姆更換成240歐姆。
+<img src="https://github.com/TomAThub/Hiveton-H5000M-4GB-RAM-Mod-Guide/raw/main/1.jpg" width="800" alt="Resistor Mod">
 
 b.修改圖片[2]（電路板背面，位於DDR4顆粒正後方位置）圈起來的位置的電阻，將其移除。
+<img src="https://github.com/TomAThub/Hiveton-H5000M-4GB-RAM-Mod-Guide/raw/main/2.jpg" width="800" alt="Resistor Mod">
 
 注意事項：電路板有兩個版本，此為V2版本，設置電阻不影嚮更換4GB顆粒(較原本的1GB顆粒大），若為V1版本，設置電阻會擋到體積較大的4GB顆粒，導置顆粒無法安裝，改裝前需注意電路板板本。
 
