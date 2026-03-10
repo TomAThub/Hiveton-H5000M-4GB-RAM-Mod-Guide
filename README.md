@@ -3,8 +3,8 @@
 This repository provides a comprehensive guide to upgrading the RAM of the **Hiveton H5000M (MT7987A)** from the stock 1GB to **4GB DDR4 3200Mbps**. This mod achieves stable operation at the default frequency without the need for downclocking.
 
 ## Environment & Hardware Specifications
-* **Device Model:** Hiveton H5000M
-* **SoC:** MediaTek MT7987A (Filogic 830)
+* **Device Model:** Hiveton (Airpi) H5000M
+* **SoC:** MediaTek MT7987A 
 * **RAM Chip:** SK Hynix **H5ANBG6NAMR-XNC** (DDR4 16Gb, x16 DDP High-Density Package)
 * **Final Frequency:** **3200Mbps** (Stable at default clock)
 * **Bootloader Source:** [hanwckf/bl-mt798x](https://github.com/hanwckf/bl-mt798x) (ATF/BL2)
