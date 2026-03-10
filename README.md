@@ -24,11 +24,13 @@ Based on the **MT7988 (BPI-R4)** 8GB upgrade reference, the MT7987 requires hard
 Locate the cluster of resistors next to the DDR4 chip as shown in the image below. There are five resistors aligned in a row. 
 * **Action:** Identify the **second resistor from the right**. Replace the original 0-ohm resistor with a **240-ohm** resistor.
 
-
+<img src="https://github.com/TomAThub/Hiveton-H5000M-4GB-RAM-Mod-Guide/raw/main/1.jpg" width="800" alt="Resistor Mod">
 
 **B. Bottom Side Modification:**
 Flip the PCB to the back, directly behind the DDR4 chip.
 * **Action:** **Remove** the resistor circled in the reference image.
+
+<img src="https://github.com/TomAThub/Hiveton-H5000M-4GB-RAM-Mod-Guide/raw/main/2.jpg" width="800" alt="Resistor Mod">
 
 #### PCB Revision Warning:
 * **V2 PCB:** The layout is compatible with larger 4GB chip footprints.
